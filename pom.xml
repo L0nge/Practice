@@ -14,6 +14,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version >4.2.7.RELEASE </spring.version>
+    <mybatis.version>3.2.6</mybatis.version>
   </properties>
 
   <dependencies>
@@ -24,31 +25,91 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- spring -->
+    <!-- spring相关 -->
     <dependency>
-      <groupId> org.springframework</groupId >
-      <artifactId> spring-context</artifactId >
-      <version> ${spring.version}</version >
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
     </dependency>
     <dependency>
-      <groupId> org.springframework</groupId >
-      <artifactId> spring-core</artifactId >
-      <version> ${spring.version}</version >
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version> ${spring.version}</version>
     </dependency>
     <dependency>
-      <groupId> org.springframework</groupId >
-      <artifactId> spring-beans</artifactId >
-      <version> ${spring.version}</version >
-    </dependency>
-    <dependency >
-      <groupId> org.springframework</groupId >
-      <artifactId> spring-web</artifactId >
-      <version> ${spring.version}</version >
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.version}</version>
     </dependency>
     <dependency>
-      <groupId> org.springframework</groupId >
-      <artifactId> spring-webmvc </artifactId>
-      <version> ${spring.version}</version >
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- JSTL标签库相关 -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+
+    <!-- servlet相关 -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+    </dependency>
+
+    <!-- mybatis相关 -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatis.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>1.2.2</version>
+    </dependency>
+
+    <!-- mysql的数据库驱动包 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.21</version>
+    </dependency>
+
+    <!-- 数据源 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.16</version>
     </dependency>
   </dependencies>
   <build>
