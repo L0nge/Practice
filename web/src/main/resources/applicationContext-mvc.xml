@@ -20,17 +20,17 @@
     </bean>
 
     <!--配置拦截器, 多个拦截器,顺序执行。当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/cmmember/**"/>
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/cmmember/**"/>-->
 
-            <bean class="com.my.interceptor.LoginInterceptor">
-                <property name="excludeUrls">
-                    <list>
-                        <value>memlogincenter.jhtml</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
+            <!--<bean class="com.my.interceptor.LoginInterceptor">-->
+                <!--<property name="excludeUrls">-->
+                    <!--<list>-->
+                        <!--<value>memlogincenter.jhtml</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 </beans>

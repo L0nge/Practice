@@ -115,6 +115,14 @@
       <artifactId>druid</artifactId>
       <version>1.0.16</version>
     </dependency>
+
+    <!-- 注解代替set,get方法 -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.10</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>practice</finalName>

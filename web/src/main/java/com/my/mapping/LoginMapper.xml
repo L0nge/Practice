@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.my.dao.LoginMapper">
+    <resultMap id="baseResultMap" type="com.my.entity.Member">
+        <result column="mem_mobile" property="memMobile" jdbcType="VARCHAR" />
+        <result column="mem_pwd" property="memPwd" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getMemberInfo" resultMap="baseResultMap">
+        SELECT
+          *
+        FROM my_member
+        WHERE mem_mobile = #{memMobile, jdbcType=VARCHAR}
+    </select>
 
 
 </mapper>
