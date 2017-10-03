@@ -102,6 +102,25 @@
       <version>1.2.2</version>
     </dependency>
 
+    <!--分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>4.1.6</version>
+    </dependency>
+
+    <!--Mybatis缓存-->
+    <dependency>
+      <groupId>org.mybatis.caches</groupId>
+      <artifactId>mybatis-ehcache</artifactId>
+      <version>1.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.6.9</version>
+    </dependency>
+
     <!-- mysql的数据库驱动包 -->
     <dependency>
       <groupId>mysql</groupId>
@@ -122,7 +141,6 @@
       <artifactId>lombok</artifactId>
       <version>1.16.10</version>
     </dependency>
-
   </dependencies>
   <build>
     <plugins>

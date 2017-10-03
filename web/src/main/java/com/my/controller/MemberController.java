@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by Longe on 2017.09.27.
  */
 @Controller
-@RequestMapping(value = "/member")
+@RequestMapping(value = "member")
 public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @RequestMapping(value = "/info")
+    @RequestMapping(value = "info")
     @ResponseBody
     public String getInfo(@RequestParam(value = "memMobile")String memMobile) {
         Member member = memberService.getMemberInfo(memMobile);

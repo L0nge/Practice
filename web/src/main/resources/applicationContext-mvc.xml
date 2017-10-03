@@ -8,7 +8,10 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
 
-    <!-- 自动扫描web包,将带有注解的类纳入spring容器管理,配置了包扫描就无需配置"<context:annotation-config />" -->
+    <!-- 声明@RequestMapping、@RequestBody、@ResponseBody等，该配置默认加载很多的参数绑定方法，比如json转换解析器等 -->
+    <mvc:annotation-driven />
+
+    <!-- SpringMvc子容器中只注册@Controller注解的bean -->
     <context:component-scan base-package="com.my" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>

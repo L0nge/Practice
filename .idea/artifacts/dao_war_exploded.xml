@@ -30,6 +30,11 @@
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.6" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.2" />
+          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.1.6" />
+          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.5" />
+          <element id="library" level="project" name="Maven: org.mybatis.caches:mybatis-ehcache:1.0.3" />
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.6.9" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.21" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.16" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.10" />
