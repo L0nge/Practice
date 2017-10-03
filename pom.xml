@@ -125,6 +125,21 @@
 
   </dependencies>
   <build>
+    <plugins>
+      <!--
+      使用IDEA时，导入的Maven项目默认的LanguageLevel和JavaCompiler都是1.5
+      在pom.xml中指定maven-compiler-plugin的版本，该版本会同时影响LanguageLevel和JavaCompiler，
+      修改后默认就成了这里设置的版本
+      -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
     <finalName>practice</finalName>
   </build>
 </project>

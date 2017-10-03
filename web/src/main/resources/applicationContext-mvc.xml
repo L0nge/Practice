@@ -9,7 +9,9 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
 
     <!-- 自动扫描web包,将带有注解的类纳入spring容器管理,配置了包扫描就无需配置"<context:annotation-config />" -->
-    <context:component-scan base-package="com.my" />
+    <context:component-scan base-package="com.my" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
 
     <!-- spring mvc 的两种视图解析器
     InternalResourceViewResolver：这是一个最常用的解析器。通常使用它指定渲染对象为jsp页面

@@ -11,6 +11,10 @@
 
     <context:property-placeholder location="classpath*:/*.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
 
+    <context:component-scan base-package="com.my" >
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
     <!-- dataSource 配置 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
@@ -67,4 +71,7 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+    <!-- 静态资源访问 -->
+    <mvc:resources location="/common/" mapping="/common/**"/>
 </beans>
