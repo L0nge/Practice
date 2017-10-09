@@ -23,3 +23,8 @@ target/
 
 ## Directory-based project format:
 .idea/
+
+######################
+# jrebel产生的文件
+######################
+rebel.xml

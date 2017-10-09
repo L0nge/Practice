@@ -20,6 +20,8 @@
     <spring.version >4.2.7.RELEASE </spring.version>
     <mybatis.version>3.2.6</mybatis.version>
     <logback.version>1.1.2</logback.version>
+    <log4j.version>1.2.12</log4j.version>
+    <slf4j.version>1.6.6</slf4j.version>
   </properties>
 
   <dependencies>
@@ -78,21 +80,25 @@
     </dependency>
 
     <!-- 日志 -->
+    <!-- slf4j是一个日志系统的封装，对外提供统一的API，不提供日志具体实现 -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <!-- logback日志实现 -->
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
       <version>${logback.version}</version>
     </dependency>
+    <!-- logback服务于slf4j的驱动 -->
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback.version}</version>
     </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-access</artifactId>
-      <version>${logback.version}</version>
-    </dependency>
+    <!-- spring中使用logback -->
     <dependency>
       <groupId>org.logback-extensions</groupId>
       <artifactId>logback-ext-spring</artifactId>
