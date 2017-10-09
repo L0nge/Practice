@@ -13,6 +13,4 @@
         FROM my_member
         WHERE mem_mobile = #{memMobile, jdbcType=VARCHAR}
     </select>
-
-
 </mapper>

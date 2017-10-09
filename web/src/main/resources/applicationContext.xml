@@ -11,6 +11,11 @@
 
     <context:property-placeholder location="classpath*:/*.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
 
+    <!-- Spring父容器中注册非@Controller注解的bean -->
+    <context:component-scan base-package="com.my" >
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
     <!-- dataSource 配置 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
@@ -50,13 +55,10 @@
         <property name="configLocation" value="classpath:ehcache.xml" />
     </bean>
 
-    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <!-- 文件映射器，指定类文件 -->
-        <property name="configLocation" value="classpath:mybatis-config.xml" />
-        <!-- 自动扫描mapping.xml文件 -->
-        <property name="mapperLocations" value="classpath:com/my/mapping/*.xml" />
+    <!-- mybatis文件配置，扫描所有mapper文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:dataSource-ref="dataSource" p:configLocation="classpath:mybatis-config.xml">
+        <property name="mapperLocations" value="classpath*:com/my/mapping/*Mapper.xml" />
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -67,4 +69,7 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+    <!-- 静态资源访问 -->
+    <mvc:resources location="/common/" mapping="/common/**"/>
 </beans>

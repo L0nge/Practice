@@ -102,6 +102,25 @@
       <version>1.2.2</version>
     </dependency>
 
+    <!--分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>4.1.6</version>
+    </dependency>
+
+    <!--Mybatis缓存-->
+    <dependency>
+      <groupId>org.mybatis.caches</groupId>
+      <artifactId>mybatis-ehcache</artifactId>
+      <version>1.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.6.9</version>
+    </dependency>
+
     <!-- mysql的数据库驱动包 -->
     <dependency>
       <groupId>mysql</groupId>
@@ -122,9 +141,23 @@
       <artifactId>lombok</artifactId>
       <version>1.16.10</version>
     </dependency>
-
   </dependencies>
   <build>
+    <plugins>
+      <!--
+      使用IDEA时，导入的Maven项目默认的LanguageLevel和JavaCompiler都是1.5
+      在pom.xml中指定maven-compiler-plugin的版本，该版本会同时影响LanguageLevel和JavaCompiler，
+      修改后默认就成了这里设置的版本
+      -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
     <finalName>practice</finalName>
   </build>
 </project>
