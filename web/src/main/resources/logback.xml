@@ -2,14 +2,13 @@
 <configuration>
     <!-- 尽量别用绝对路径，如果带参数不同容器路径解释可能不同,以下配置参数在pom.xml里 -->
     <property name="log.root.level" value="DEBUG" /> <!-- 日志级别 -->
-    <property name="log.other.level" value="DEBUG" /> <!-- 其他日志级别 -->
     <property name="log.base" value="${catalina.home}/applog/practice" />
     <!--<property name="log.max.size" value="100MB" />--> <!-- 日志文件大小 -->
 
     <!--控制台输出 -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread]%logger{56}.%method:%L %msg%n</pattern>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %logger{56}.%method:%L %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -28,19 +27,17 @@
         </rollingPolicy>
         <!-- 日志输出的文件的格式  -->
         <encoder>
-            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread]%logger{56}.%method:%L %msg%n</pattern>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %logger{56}.%method:%L %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- 为某个包下的所有类的指定Appender 这里也可以指定类名称例如：com.aa.bb.ClassName -->
-    <!--<logger name="com.my" additivity="false">
-        <level value="debug" />
-        <appender-ref ref="console" />
-        <appender-ref ref="file" />
+    <!-- 为某个包下的所有类的指定Appender，additivity属性为false，表示此loger的打印信息不再向上级传递 -->
+    <!--<logger name="com.my" additivity="false" level="${log.other.level}">
+        <appender-ref ref="stdout" />
     </logger>-->
 
     <root level="${log.root.level}">
-        <appender-ref ref="stdout" /> <!-- 标识这个appender将会添加到这个logger -->
-        <appender-ref ref="file" />
+        <!--<appender-ref ref="file" />-->
+        <appender-ref ref="stdout" />
     </root>
 </configuration>

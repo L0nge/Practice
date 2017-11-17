@@ -25,7 +25,7 @@ public class MemberController {
     @ResponseBody
     public String getInfo(@RequestParam(value = "memMobile")String memMobile) {
         Member member = memberService.getMemberInfo(memMobile);
-        LOGGER.info(member.toString());
+        LOGGER.info("{}", member);
         return member.toString();
     }
 }
