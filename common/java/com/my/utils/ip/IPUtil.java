@@ -1,7 +1,7 @@
 package com.my.utils.ip;
 
-import com.common.utils.UnicodeUtil;
-import com.common.utils.json.JsonUtil;
+import com.my.utils.UnicodeUtil;
+import com.my.utils.json.JsonUtil;
 import net.sf.json.JSONObject;
 
 import java.io.BufferedReader;

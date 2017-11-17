@@ -17,7 +17,9 @@ import java.util.List;
  */
 public class FtpUtil {
 	private FTPClient ftpClient;
+
 	public static final int BINARY_FILE_TYPE = FTP.BINARY_FILE_TYPE;
+
 	public static final int ASCII_FILE_TYPE = FTP.ASCII_FILE_TYPE;
 
 	private static final Logger log = LoggerFactory.getLogger(FtpUtil.class);

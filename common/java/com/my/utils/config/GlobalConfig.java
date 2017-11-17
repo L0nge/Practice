@@ -70,23 +70,7 @@ public class GlobalConfig {
      */
     public static final int PIC_SERVER_PROT = 21;
 
-	/**
-	 * http请求发送失败
-	 */
-	public static final int SENDFAIL = 0;
 
-	/**
-	 * http请求发送成功
-	 */
-	public static final int SENDSUC = 1;
 
-	/**
-	 * http请求超时
-	 */
-	public static final int TIMEOUT = 3;
 
-	/**
-	 * 手机号码归属地查询URL
-	 */
-	public static final String URL = "http://www.ip138.com:8080/search.asp?action=mobile&mobile=%s";
 }

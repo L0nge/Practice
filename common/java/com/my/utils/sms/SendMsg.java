@@ -1,7 +1,7 @@
 package com.my.utils.sms;
 
-import com.common.utils.httpClient.HttpClientUtil;
-import com.common.utils.encode.MD5;
+import com.my.utils.httpClient.HttpClientUtil;
+import com.my.utils.encode.MD5;
 import net.sf.json.JSONObject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -1,6 +1,6 @@
 package com.my.utils;
 
-import com.common.utils.config.GlobalConfig;
+import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -14,6 +14,11 @@ import java.util.regex.Pattern;
  */
 public class Regex {
 	/**
+	 * 手机号码归属地查询URL
+	 */
+	public static final String URL = "http://www.ip138.com:8080/search.asp?action=mobile&mobile=%s";
+
+	/**
 	 * <h2>判断字符串是否为手机号码</h2>
 	 * 
 	 * @param str
@@ -21,12 +26,9 @@ public class Regex {
 	 * @return
 	 */
 	public static boolean isMobile(String str) {
-		Pattern p = null;
-		Matcher m = null;
-		boolean b = false;
-		p = Pattern.compile("^[1][3,4,5,8][0-9]{9}$"); // 验证手机号
-		m = p.matcher(str);
-		b = m.matches();
+		Pattern p = Pattern.compile("^[1][3,4,5,8][0-9]{9}$"); // 验证手机号
+		Matcher m = p.matcher(str);
+		boolean b = m.matches();
 		return b;
 	}
 
@@ -41,12 +43,9 @@ public class Regex {
 	 * @return
 	 */
 	public static boolean isNumber(String str) {
-		Pattern p = null;
-		Matcher m = null;
-		boolean b = false;
-		p = Pattern.compile("^(([1-9]{1}\\d*)|([0]{1}))(\\.(\\d){0,2})?$"); // 验证金额
-		m = p.matcher(str);
-		b = m.matches();
+		Pattern p = Pattern.compile("^(([1-9]{1}\\d*)|([0]{1}))(\\.(\\d){0,2})?$"); // 验证金额
+		Matcher m = p.matcher(str);
+		boolean b = m.matches();
 		return b;
 	}
 
@@ -57,7 +56,7 @@ public class Regex {
 	 * @return
 	 */
 	public static boolean isDate(String date) {
-		if (StringUtil.isNullAndEmpty(date)) {
+		if (StringUtils.isBlank(date)) {
 			return false;
 		} else {
 			Pattern p = Pattern.compile("^((\\d{2}(([02468][048])|([13579][26]))[\\-]?((((0?[13578])|(1[02]))[\\-]?"
@@ -69,14 +68,13 @@ public class Regex {
 			Matcher matcher = p.matcher(date);
 			return matcher.matches();
 		}
-
 	}
 
 	/**
 	 * <h2>判断日期时间格式是否正确</h2>
 	 */
 	public static boolean isDateTime(String dateTime) {
-		if (StringUtil.isNullAndEmpty(dateTime)) {
+		if (StringUtils.isBlank(dateTime)) {
 			return false;
 		} else {
 			Pattern p = Pattern.compile("^((\\d{2}(([02468][048])|([13579][26]))[\\-]?((((0?[13578])|(1[02]))[\\-]?"
@@ -93,7 +91,6 @@ public class Regex {
 
 	/**
 	 * 根据Unicode编码完美的判断中文汉字和符号
-	 * 
 	 * @param c
 	 * @return
 	 */
@@ -113,7 +110,6 @@ public class Regex {
 
 	/**
 	 * 完整的判断中文汉字和符号
-	 * 
 	 * @param strName
 	 * @return
 	 */
@@ -130,7 +126,6 @@ public class Regex {
 
 	/**
 	 * 只能判断部分CJK字符（CJK统一汉字）
-	 * 
 	 * @param str
 	 * @return
 	 */
@@ -144,7 +139,6 @@ public class Regex {
 
 	/**
 	 * 只能判断部分CJK字符（CJK统一汉字）
-	 * 
 	 * @param str
 	 * @return
 	 */
@@ -165,9 +159,9 @@ public class Regex {
 	 * @return
 	 */
 	public static String belongResult(String mobile){
-		String result=null;
+		String result;
 		if(isMobile(mobile)){
-		String url=String.format(GlobalConfig.URL, mobile);
+		String url=String.format(URL, mobile);
 		Document doc = null;
 		try {
 			doc = Jsoup.connect(url).get();
@@ -181,7 +175,6 @@ public class Regex {
 			}else {
 				result="归属地：" + els.get(1).text();
 			}
-		
 		}
 		else{
 			result="验证手机号有误,请输入完整且准确的手机号码";
@@ -195,9 +188,9 @@ public class Regex {
 	 * @return
 	 */
 	public static String serviceResult(String mobile){
-		String result=null;
+		String result;
 		if(isMobile(mobile)){
-			String url=String.format(GlobalConfig.URL, mobile);
+			String url=String.format(URL, mobile);
 			Document doc = null;
 			try {
 				doc = Jsoup.connect(url).get();
@@ -215,21 +208,9 @@ public class Regex {
 			}else {
 				result="该号码不存在";
 			}
-			
-		}else
-		{
+		} else {
 			result="验证手机号有误,请输入完整且准确的手机号码";
 		}
 		return result;
-	}
-	
-	public static boolean phoneIdentify(String phonenumber){
-		
-		//phoneService.findByTel(phonenumber);
-		return true;
-	}
-	
-
-	public static void main(String[] args) {		
 	}
 }

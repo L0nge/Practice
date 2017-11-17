@@ -20,7 +20,7 @@ public class CookieUtil {
     public static void addCookie(HttpServletResponse response, String name, String value, int maxAge, String domain) {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath("/");
-        if (StringUtils.isNotBlank(domain)) {
+        if (StringUtils.isNotEmpty(domain)) {
             cookie.setDomain(domain);
         }
         if (maxAge > 0) cookie.setMaxAge(maxAge);

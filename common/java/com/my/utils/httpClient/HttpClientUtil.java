@@ -1,7 +1,6 @@
 package com.my.utils.httpClient;
 
-import com.common.utils.StringUtil;
-import com.common.utils.config.GlobalConfig;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -35,26 +34,36 @@ import java.util.Map;
  */
 
 public class HttpClientUtil {
+	/**
+	 * http请求发送失败
+	 */
+	public static final int SENDFAIL = 0;
 
-	private HttpClientUtil() {
-	}
+	/**
+	 * http请求发送成功
+	 */
+	public static final int SENDSUC = 1;
+
+	/**
+	 * http请求超时
+	 */
+	public static final int TIMEOUT = 3;
+
+	private HttpClientUtil() {}
 
 	/**
 	 * 发送HTTP_GET请求
-	 * 
 	 * @see 1)该方法会自动关闭连接,释放资源
 	 * @see 2)方法内设置了连接和读取超时时间,单位为毫秒,超时或发生其它异常时方法会自动返回"通信失败"字符串
 	 * @see 3)请求参数含中文时,经测试可直接传入中文,HttpClient会自动编码发给Server,应用时应根据实际效果决定传入前是否转码
-	 * @see 4)该方法会自动获取到响应消息头中[Content-Type:text/html;
-	 *      charset=GBK]的charset值作为响应报文的解码字符集
+	 * @see 4)该方法会自动获取到响应消息头中[Content-Type:text/html;charset=GBK]的charset值作为响应报文的解码字符集
 	 * @see 5)若响应消息头中无Content-Type属性,则自己指定字符集作为响应报文的解码字符集(如传空值，则默认用ISO8859-1)
-	 * @param reqURL
-	 *            请求地址(含参数)
+	 * @param reqURL 请求地址(含参数)
 	 * @param encodeName 返回字符集格式
 	 * @return 远程主机响应正文
 	 */
 	public static String sendGetRequest(String reqURL, String encodeName) {
-		String respContent = String.valueOf(GlobalConfig.SENDFAIL); // 响应内容
+		String respContent = String.valueOf(SENDFAIL); // 响应内容
 		HttpClient httpClient = new DefaultHttpClient(); // 创建默认的httpClient实例
 		// 设置代理服务器
 		httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000); // 连接超时5s
@@ -66,7 +75,7 @@ public class HttpClientUtil {
 			if (null != entity) {
 				Charset respCharset = ContentType.getOrDefault(entity).getCharset();
 				if (respCharset == null) {
-					if (!StringUtil.isNullAndEmpty(encodeName)) {
+					if (StringUtils.isNotEmpty(encodeName)) {
 						respCharset = Charset.forName("UTF-8");
 					}
 				}
@@ -100,7 +109,7 @@ public class HttpClientUtil {
 		} catch (ConnectTimeoutException cte) { // 连接超时
 			cte.printStackTrace();
 		} catch (SocketTimeoutException ste) { // 响应超时
-			respContent = String.valueOf(GlobalConfig.TIMEOUT);
+			respContent = String.valueOf(TIMEOUT);
 			ste.printStackTrace();
 		} catch (ClientProtocolException cpe) { // 协议错误
 			cpe.printStackTrace();
@@ -119,20 +128,15 @@ public class HttpClientUtil {
 
 	/**
 	 * 发送HTTP_POST请求
-	 * 
 	 * @see 1)该方法允许自定义任何格式和内容的HTTP请求报文体
 	 * @see 2)该方法会自动关闭连接,释放资源
 	 * @see 3)方法内设置了连接和读取超时时间,单位为毫秒,超时或发生其它异常时方法会自动返回"通信失败"字符串
 	 * @see 4)请求参数含中文等特殊字符时,可直接传入本方法,并指明其编码字符集encodeCharset参数,方法内部会自动对其转码
-	 * @see 5)该方法在解码响应报文时所采用的编码,取自响应消息头中的[Content-Type:text/html;
-	 *      charset=GBK]的charset值
+	 * @see 5)该方法在解码响应报文时所采用的编码,取自响应消息头中的[Content-Type:text/html; charset=GBK]的charset值
 	 * @see 6)若响应消息头中未指定Content-Type属性,则会使用HttpClient内部默认的ISO-8859-1
-	 * @param reqURL
-	 *            请求地址
-	 * @param reqData
-	 *            请求参数,若有多个参数则应拼接为param11=value11&22=value22&33=value33的形式
-	 * @param encodeCharset
-	 *            编码字符集,编码请求数据时用之,此参数为必填项(不能为""或null)
+	 * @param reqURL 请求地址
+	 * @param reqData 请求参数,若有多个参数则应拼接为param11=value11&22=value22&33=value33的形式
+	 * @param encodeCharset 编码字符集,编码请求数据时用之,此参数为必填项(不能为""或null)
 	 * @return 远程主机响应正文
 	 */
 	public static String sendPostRequest(String reqURL, String reqData, String encodeCharset) {
