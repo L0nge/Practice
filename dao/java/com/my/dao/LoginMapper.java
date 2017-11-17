@@ -9,4 +9,6 @@ import org.apache.ibatis.annotations.Param;
 public interface LoginMapper {
     //查询会员信息
     Member getMemberInfo(@Param(value = "memMobile")String memMobile);
+
+    Integer addMember(Member member);
 }

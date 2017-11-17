@@ -1,15 +1,11 @@
 package com.my.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  * Created by Longe on 2017.09.29.
  */
-@Getter
-@Setter
-@ToString
+@Data
 public class Member {
     /**
      * 用户名

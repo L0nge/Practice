@@ -11,9 +11,10 @@
     <!-- 声明@RequestMapping、@RequestBody、@ResponseBody等，该配置默认加载很多的参数绑定方法，比如json转换解析器等 -->
     <mvc:annotation-driven />
 
-    <!-- SpringMvc子容器中只注册@Controller注解的bean -->
-    <context:component-scan base-package="com.my" use-default-filters="false">
+    <!-- SpringMvc子容器中只注册@Controller注解的bean，需排除@Service注解的bean(Spring父容器中作事务增强用) -->
+    <context:component-scan base-package="com.my">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
     </context:component-scan>
 
     <!-- spring mvc 的两种视图解析器

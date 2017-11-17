@@ -7,10 +7,22 @@
         <result column="mem_pwd" property="memPwd" jdbcType="VARCHAR" />
     </resultMap>
 
+    <sql id="baseColumn">
+        mem_mobile, mem_pwd
+    </sql>
+
     <select id="getMemberInfo" resultMap="baseResultMap">
         SELECT
-          *
+          <include refid="baseColumn" />
         FROM my_member
-        WHERE mem_mobile = #{memMobile, jdbcType=VARCHAR}
+        WHERE mem_mobile = #{memMobile}
     </select>
+
+    <insert id="addMember" parameterType="com.my.entity.Member">
+        insert into my_member(mem_mobile, mem_pwd)
+        values(
+          #{memMobile},
+          #{memPwd}
+        )
+    </insert>
 </mapper>

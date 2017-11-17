@@ -8,4 +8,6 @@ import com.my.entity.Member;
 public interface MemberService {
     //查询会员信息
     Member getMemberInfo(String memMobile);
+
+    Integer addMember(Member member);
 }
