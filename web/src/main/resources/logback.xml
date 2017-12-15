@@ -2,7 +2,7 @@
 <configuration>
     <!-- 尽量别用绝对路径，如果带参数不同容器路径解释可能不同,以下配置参数在pom.xml里 -->
     <property name="log.root.level" value="DEBUG" /> <!-- 日志级别 -->
-    <property name="log.base" value="${catalina.home}/applog/practice" />
+    <property name="log.base" value="${catalina.home}/logs/practice" />
     <!--<property name="log.max.size" value="100MB" />--> <!-- 日志文件大小 -->
 
     <!--控制台输出 -->
